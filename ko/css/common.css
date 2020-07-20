@@ -1,0 +1,60 @@
+@-webkit-keyframes rotate {
+	from{
+		-webkit-transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes viewMore{
+  0%{
+    -webkit-transform: scale(1);
+  }
+  50%{
+    -webkit-transform: scale(1.7);
+  }
+  100%{
+    -webkit-transform: scale(1);
+  }
+}
+/* html{
+  cursor: url("/ko/image/mouse.png"), auto} */
+body{
+  background:#FDF6E3;
+}
+header{
+  width:100%; position:absolute; left:0px; top:50px; font:normal 24px "Roboto"; font-weight: 500; z-index:1;
+}
+header div{
+   margin-right:20px; position:absolute; left:100px; top:0px; cursor:pointer;
+}
+header ul{
+  position:absolute; right:100px; top:0px;
+}
+header li{
+  float:left; margin-left:25px; position: relative; left:0px; top:0px; cursor:pointer;
+}
+header li::after{
+  content: "";
+  position:absolute; left:0px; top:30px; height:2px; width:0%; background:black; -webkit-transition:0.2s ease;
+}
+header div::after{
+  content: "";
+  position:absolute; left:0px; top:30px; height:2px; width:0%; background:black; -webkit-transition:0.2s ease;
+}
+header li:hover::after{
+  width:100%;
+}
+header div:hover::after{
+  width:100%;
+}
+header li.selected_menu::after{
+  width:100%;
+}
+header div.selected_menu::after{
+  width:100%;
+}
+.black_bg{
+  width:100%; height:100%; position:fixed; left:0px; top:0px; background:black; z-index:100;
+}

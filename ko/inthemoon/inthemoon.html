@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+  <title>My portfolio</title>
+  <link rel='stylesheet' href='/ko/css/reset.css'/>
+  <link rel='stylesheet' href='/ko/css/common.css'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,regular,500,700,900" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Prata:regular" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script src='/ko/js/common.js'></script>
+  <link rel='stylesheet' href='/ko/inthemoon/style.css'/>
+  <script>
+    $(document).ready(function(){
+      ShowBg()
+      homeHeight()
+      downArrow()
+      next()
+      prev()
+      
+      planning()
+
+      viewMore()
+      
+    })
+    function currentPage(){
+      $("header").find("li").eq(1).addClass("selected_menu")
+    }
+
+    function ShowBg(){
+      var $black=$("<div class='black_bg'></div>")
+      $black.appendTo("body")
+      $black.animate({"top":-$(window).innerHeight()},700,"easeInCubic",function(){
+        showText()
+        currentPage()
+      })
+    }
+    function viewMore(){
+
+      $("#intro_more,#mockup").on("click",clickBtn)
+      function clickBtn(){
+        window.open('http://inthemoon.dothome.co.kr','_blank','height=' +$(window).innerHeight() + ',width=' + $(window).innerWidth() + 'fullscreen=yes')
+      }
+
+      $("#wire_link").on("click",openFigma)
+      function openFigma(){
+        window.open('https://www.figma.com/file/MUHk35qkiRGrbxp1XgFdkK/inthemoon_wireframe','figma','height=' +$(window).innerHeight() + ',width=' + $(window).innerWidth() + 'fullscreen=yes')
+      }
+
+      $("#wire_link2").on("click",openFigma1)
+      function openFigma1(){
+        window.open('https://www.figma.com/file/ebbzR9N3pHknx3tO5LUSvb/inthemoon_mobile','figma','height=' +$(window).innerHeight() + ',width=' + $(window).innerWidth() + 'fullscreen=yes')
+      }
+
+    }
+
+    function homeHeight(){
+    $("#home").css({"height":$(window).innerHeight()})
+    }
+
+    function showText(){
+    var textNum=$("#home_title").children().size()
+
+      for(var i=0; i<textNum; i++){
+        $("#home_title").children().css({"opacity":0,"top":300})
+        $("#home_title").children().eq(i).animate({"opacity":1,"top":0},500+(150*i),"easeOutCubic")
+      }
+    }
+
+    function downArrow(){
+      $("#down").on("click",function(){
+        $("body,html").stop()
+        $("body,html").animate({"scroll-top":$(window).innerHeight()},600,"easeOutCubic")
+      })
+    }
+
+    function next(){
+      $("#next,#bottom_next").on("click",function(){
+        var $black=$("<div class='black_bg'></div>")
+        $black.css({"top":$(window).innerHeight()})
+        $black.appendTo("body")
+        $black.animate({"top":0},500,"easeOutCubic",function(){
+          window.location.replace("http://kimjieun.dothome.co.kr/ko/markrothko/markrothko.html")
+        })
+      })
+    }
+    function prev(){
+      $("#prev,#bottom_prev").on("click",function(){
+        var $black=$("<div class='black_bg'></div>")
+        $black.css({"top":$(window).innerHeight()})
+        $black.appendTo("body")
+        $black.animate({"top":0},500,"easeOutCubic",function(){
+          window.location.replace("http://kimjieun.dothome.co.kr/ko/innisfree/innisfree.html")
+        })
+      })
+    }
+
+    function planning(){
+      var num
+      var $wrap=$("#workppt_wrap")
+
+      $(".planning_name").on("click", showPpt)
+
+      function showPpt(){
+        num=$(".planning_name").index($(this))
+
+        $("body").css({"overflow":"hidden"})
+        $wrap.css({"display":"block"})
+
+        $wrap.load('/ko/inthemoon/planning.html',function(){
+          $wrap.show()
+          $("#workppt").show()
+          $("#workppt").children().eq(num).show()
+          $("#workppt").stop()
+          $("#workppt").animate({"opacity":1,"top":0},400,"easeOutCubic")
+
+          $(".workppt_exit").on("click",function(){
+            $("#workppt").stop()
+            $("#workppt").animate({"opacity":0,"top":100},400,"easeOutCubic",function(){
+              $("#workppt").children().hide()
+               $wrap.hide()
+               $("body").css({"overflow":"visible"})
+            })
+          })
+
+        })
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <header>
+    <div>KIMJIEUN</div>
+    <ul id="menu_list">
+      <li>ABOUT</li>
+      <li>WORK</li>
+      <li>CONTACT</li>
+    </ul>
+  </header>
+  <div id="home">
+    <div id="home_title"><span>I</span><span>n </span><span>t</span><span>h</span><span>e </span><span>m</span><span>o</span><span>o</span><span>n</span></div>
+    <div id="prev"></div>
+    <div id="next"></div>
+    <div id="down"></div>
+    <!-- <div id="num">01 / 04</div> -->
+    <div id="info">반응형<br>100% 하드코딩<br>그누보드 연동<br>웹접근성 준수</div>
+  </div>
+  <div id="work">
+    <div id="intro">
+      <div id="intro_title">In the moon<!-- <span id="video_pc">Pc</span><span id="video_mobile">Mobile</span> --></div>
+      <div id="intro_more" class="intro_click"><div class="intro_clickcircle"></div><div class="intro_clickmore">View site</div></div>
+      <div id="intro_more2" class="intro_click"><div class="intro_clickcircle"></div><div class="intro_clickmore">View code</div></div>
+      <!-- <video controls autoplay muted><source src="/ko/image/Inthemoon.mp4" type="video/mp4"></video> -->
+      <div id="intro_text">캐나다에서 거주할때 경험해본 플로팅 테라피를 한국에 소개하고 싶었습니다. 인더문은 현실을 차단하고 몸과 마음을 재충전하고 싶은 사람들을 위한 힐링 테라피 사이트입니다.</div>
+    </div>
+    <div id="mockup"></div>
+    <div id="work_flow">
+      <div id="work_flow_title">Work flow</div>
+      <div id="work_flow_inner">
+        <div id="planning_title">Planning</div>
+        <ul id="planning">
+          <li>
+            <p class="planning_name">사용자 분석</p>
+            <p class="planning_arrow"></p>
+            <p class="planning_text">연령대별 사용자 분석을 통해 전체적인 시장의 상황을 파악하고 중심타겟을<br>잡은 후 페르소나를 설정해 사용자 중심의 설계에 반영하였습니다.</p>
+          </li>
+          <li>
+            <p class="planning_name">경쟁사 분석</p>
+            <p class="planning_arrow"></p>
+            <p class="planning_text">4가지 항목을 기준으로 경쟁사와 참조사의 강점과 약점을 분석하여<br>인더문의 전략 수립에 반영하였습니다.</p>
+          </li>
+          <li>
+            <p class="planning_name">차별화 전략</p>
+            <p class="planning_arrow"></p>
+            <p class="planning_text">사용자 분석과 경쟁사 분석을 통해 시장의 상황을 파악하고 사용자 중심의<br>설계을 하기 위해 인더문의 아이덴티티를 강조한 세부 전략을 세웠습니다.</p>
+          </li>
+        </ul>
+        <div id="styleguide">
+          <div id="styleguide_title">Style guide</div>
+          <div id="style_color"><span class="style_name">Color</span><span id="style_code">#856CCF</span></div>
+          <div id="style_color2"><span id="style_code2">#FFFFFF</span></div>
+          <div id="style_icon"><span class="style_name">Icon</span></div>
+          <div id="style_slogan"><span class="style_name">Slogan</span>탱크 문을 열고 우주 속으로 들어가는 순간</div>
+          <div id="style_typography">
+            <span class="style_name">Font</span>
+            <ul>
+              <li>아리따 돋움 / 18px 22px 29px<br><br>안정된 상태에 접어들면, 세타파로 뇌 활동이 증진되면서 스트레스와 불안감이 감소하고, 창의력과 집중력을 상승 시켜준다.</li>
+              <li>Ubuntu / 16px 18px 32px<br><br>When you enter a stable state, stress and anxiety decrease as your brain activity improves with theta waves, and your creativity and concentration increase.</li>
+            </ul>
+          </div>
+        </div>
+        <div id="storyboard">
+          <div id="story_title">Storyboard</div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div id="wireframe">
+          <ul id="wire_list">
+            <li>
+              <p class="wireframe_name">Wireframe</p>
+              <div class="wireimg1"></div>
+              <div class="wireimg2"></div>
+              <div id="wire_link">https://www.figma.com/inthemoon_wireframe</div>
+            </li>
+            <li>
+              <p class="wireframe_name">Design</p>
+              <div class="wireimg1"></div>
+              <div class="wireimg2"></div>
+              <div id="wire_link2">https://www.figma.com/inthemoon_mobile</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="code">
+      <div id="code_title">View code</div>
+      <ul id="code_pc">
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part1.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">skip menu</div>
+          <div class="code_text">웹 접근성을 위해 tab키로 접근하는 바로가기 메뉴</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code1.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part2.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">2depth navigation</div>
+          <div class="code_text">tab키로 접근 가능<br>for 구문에 애니메이션을 넣어 순서대로 나오는 서브메뉴
+            </div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code2.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part3.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">floating header</div>
+          <div class="code_text">scroll down 에선 사라지고 scroll up에서<br>나타나는 사용성을 고려한 floating header</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code3.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part4.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">반응형 비쥬얼 슬라이드</div>
+          <div class="code_text">index를 사용한 슬라이드<br>매개변수를 사용한 효율적인 코드</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code4.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part5.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part6.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">parallax scroll</div>
+          <div class="code_text">scrollTop 으로 높이 값을 구하고<br>scroll 할때마다 top과 opacity값을 변화시킴</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code5.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part7.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part8.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">이미지 슬라이드</div>
+          <div class="code_text">appendTo 와 prependTo를 이용한 슬라이드</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code6.png" alt=""></div>
+        </li>
+        <li>
+          <div class="code_design"><img src="/ko/image/inthemoon_part9.png" alt=""></div>
+          <div class="code_arrow"><img src="/ko/image/arrow_code.png" alt=""></div>
+          <div class="code_name">리뷰 더보기</div>
+          <div class="code_text">each data를 사용해 각각의 리뷰가 열렸다 닫힘</div>
+          <div class="code_img"><img src="/ko/image/inthemoon_code7.png" alt=""></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="workppt_wrap"></div>
+  <div id="bottom_move">
+    <div id="bottom_prev">innisfree</div>
+    <div id="bottom_next">Mark Rothko</div>
+  </div>
+</body>
+</html>

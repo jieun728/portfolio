@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+  <title>My portfolio</title>
+  <link rel='stylesheet' href='/ko/css/reset.css'/>
+  <link rel='stylesheet' href='/ko/css/common.css'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,regular,500,700,900" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Prata:regular" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script src='/ko/js/common.js'></script>
+  <link rel='stylesheet' href='/ko/ikea/style.css'/>
+  <script>
+    $(document).ready(function(){
+
+      ShowBg()
+      homeHeight()
+      downArrow()
+      next()
+      prev()
+
+      viewMore()
+      
+    })
+    function currentPage(){
+      $("header").find("li").eq(1).addClass("selected_menu")
+    }
+
+    function ShowBg(){
+      var $black=$("<div class='black_bg'></div>")
+      $black.appendTo("body")
+      $black.animate({"top":-$(window).innerHeight()},700,"easeInCubic",function(){
+        showText()
+        currentPage()
+      })
+    }
+
+    function viewMore(){
+
+      $("#intro_more,#mockup").on("click",clickBtn)
+
+      function clickBtn(){
+        window.open('http://qkekto1111.dothome.co.kr/ikea','ikea','height=' +$(window).innerHeight() + ',width=' + $(window).innerWidth() + 'fullscreen=yes')
+      }
+    }
+
+    function homeHeight(){
+    $("#home").css({"height":$(window).innerHeight()})
+    }
+
+    function showText(){
+    var textNum=$("#home_title").children().size()
+
+      for(var i=0; i<textNum; i++){
+        $("#home_title").children().css({"opacity":0,"top":300})
+        $("#home_title").children().eq(i).animate({"opacity":1,"top":0},500+(150*i),"easeOutCubic")
+      }
+    }
+
+    function downArrow(){
+      $("#down").on("click",function(){
+        $("body,html").stop()
+        $("body,html").animate({"scroll-top":$(window).innerHeight()},600,"easeOutCubic")
+      })
+    }
+
+    function next(){
+      $("#next,#bottom_next").on("click",function(){
+        var $black=$("<div class='black_bg'></div>")
+        $black.css({"top":$(window).innerHeight()})
+        $black.appendTo("body")
+        $black.animate({"top":0},500,"easeOutCubic",function(){
+          window.location.replace("http://kimjieun.dothome.co.kr/ko/innisfree/innisfree.html")
+        })
+        //window.location.replace("http://kimjieun.dothome.co.kr/ko/innisfree/innisfree.html")
+      })
+    }
+    function prev(){
+      $("#prev,#bottom_prev").on("click",function(){
+        var $black=$("<div class='black_bg'></div>")
+        $black.css({"top":$(window).innerHeight()})
+        $black.appendTo("body")
+        $black.animate({"top":0},500,"easeOutCubic",function(){
+          window.location.replace("http://kimjieun.dothome.co.kr/ko/markrothko/markrothko.html")
+        })
+        //window.location.replace("http://kimjieun.dothome.co.kr/ko/markrothko/markrothko.html")
+      })
+    }
+
+  </script>
+</head>
+<body>
+  <header>
+    <div>KIMJIEUN</div>
+    <ul id="menu_list">
+      <li>ABOUT</li>
+      <li>WORK</li>
+      <li>CONTACT</li>
+    </ul>
+  </header>
+  <div id="home">
+    <div id="home_title"><span>I</span><span>K</span><span>E</span><span>A</span></div>
+    <div id="prev"></div>
+    <div id="next"></div>
+    <div id="down"></div>
+    <div id="num">03 / 04</div>
+    <div id="info">리뉴얼 사이트<br>2depth 네비게이션<br>반응형 도트 슬라이드</div>
+  </div>
+  <div id="work">
+    <div id="intro">
+      <div id="intro_title">IKEA</div>
+      <div id="intro_more" class="intro_click"><div class="intro_clickcircle"></div><div class="intro_clickmore">View site</div></div>
+      <div id="intro_more2" class="intro_click"><div class="intro_clickcircle"></div><div class="intro_clickmore">View code</div></div>
+      <!-- <video controls autoplay><source src="Inthemoon.mp4" type="video/mp4"></video> -->
+      <div id="intro_text">다양한 인테리어 이미지와 컬러풀한 색감으로 이케아를 리뉴얼 하였습니다. 다양한 인테리어 이미지와 컬러풀한 색감으로 이케아 페이지를 리뉴얼 하였습니다.</div>
+    </div>
+    <div id="mockup"></div>
+  </div>
+  <div id="bottom_move">
+    <div id="bottom_prev">Mark Rothko</div>
+    <div id="bottom_next">innisfree</div>
+  </div>
+</body>
+</html>

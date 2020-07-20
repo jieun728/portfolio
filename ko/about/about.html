@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+  <title>My portfolio</title>
+  <link rel='stylesheet' href='/ko/css/reset.css'/>
+  <link rel='stylesheet' href='/ko/css/common.css'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,regular,500,700,900" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Prata:regular" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script src='/ko/js/common.js'></script>
+  <link rel='stylesheet' href='/ko/about/style.css'/>
+  <script>
+    $(document).ready(function(){
+      var $black=$("<div class='black_bg'></div>")
+      $black.appendTo("body")
+      $("#text").css({"left":700,"opacity":0})
+      $black.animate({"top":-$(window).innerHeight()},700,"easeInCubic",function(){
+        currentPage()
+        skillEffect()
+      })
+      homeHeight()
+    })
+
+    function homeHeight(){
+      $("#about").css({"height":$(window).innerHeight()})
+    }
+    function currentPage(){
+      $("header").find("li").eq(0).addClass("selected_menu")
+    }
+    
+    function skillEffect(){
+
+      var scrollHeight
+
+      $(window).on("scroll",windowScroll)
+
+      function windowScroll(){
+        scrollHeight=$(document).scrollTop()
+
+        if(scrollHeight>=$("#skill").offset().top-$(window).innerHeight()/2){
+          $("#coding_skill").animate({"left":100,"opacity":1,"top":50},700,"easeOutCubic")
+          $("#design_skill").animate({"right":100,"opacity":1,"top":50},700,"easeOutCubic")
+        }
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div>KIMJIEUN</div>
+    <ul id="menu_list">
+      <li>ABOUT</li>
+      <li>WORK</li>
+      <li>CONTACT</li>
+    </ul>
+  </header>
+  <div id="about">
+    <div id="about_img"></div>
+    <div id="about_title">A bit about <span>myself</span></div>
+    <div id="about_text">
+      신입 웹 퍼블리셔 김지은입니다.<br><br>CSS와 JavaScript를 활용한 동적 모션을 좋아하고,<br>사용자 입장에서 더 편하고 재미있는 UI UX, <br>효율적이고 협업하기 좋은 코드에 대해 사람들과 얘기하는 것을 좋아합니다.<br>반응형, 인터랙션 등 사용자에게 편하고 즐거운 UX를 만드는 데 관심이 많습니다.<br><br>매 순간 일관적인 태도와 열정,<br>어디서든 어울릴 수 있는 친화력,<br>목표를 향해 나아가는 의지,<br><br>저의 작업물에도 저만의 강점이 담겨있습니다.<br>항상 제자리에 있지 않고 발전해 나가는 웹 퍼블리셔가 되기 위해 노력하겠습니다.<br>   
+    </div>
+  </div>
+  <div id="skill">
+    <div id="coding_skill">
+      <div class="skill_title">Coding skill</div>
+        <ul class="skill_list">
+          <li>
+            <p class="skill_name">Html5</p>
+            <p class="skill_text">한국형 웹 접근성 지침 준수한 마크업<br>tab키로 접근하는 스킵메뉴,메인메뉴<br>시멘틱 마크업<br>웹접근성을 고려한 테이블<br>접근성에 맞는 label사용</p>
+          </li>
+          <li>
+            <p class="skill_name">Css 3.0</p>
+            <p class="skill_text">크로스브라우징<br>transition속성을 활용한 사용자 인터렉션 transition 메뉴제작<br>@keyframes 코드를 활용환 인트로 모션 제작<br>::before ::after 가상요소를 활용작 사용자 인터렉션 애니메이션 제작<br>@media screen 코드를 활용한 반응형 웹페이지 하드코딩 제작<br>flex와 grid속성을 활용한 반응형 웹페이지 하드코딩 제작</p>
+          </li>
+          <li>
+            <p class="skill_name">JavaScript / JQuery</p>
+            <p class="skill_text">Java script ES6 기본 문법<br>Java script DOM<br>vanilla java script를 활용한 사용자 인터렉션 하드코딩 제작<br>JQuery DOM<br>Web animation API를 활용한 사용자 인터렉션 하드코딩<br>2depth 애니메이션을 활용한 네비게이션 하드코딩 제작<br>버튼형, 도트형 비주얼 슬라이드 애니메이션 반응형 하드코딩 제작<br>parallax scroll을 활용한 웹페이지 사용자 인터렉션 하드코딩</p>
+          </li>
+          <li>
+            <p class="skill_name">Gnu board5</p>
+            <p class="skill_text">게시판 연동<br>로그인, 회원가입 연동<br>테마적용</p>
+          </li>
+        </ul>
+    </div>
+    <div id="design_skill">
+      <div class="skill_title">Design skill</div>
+        <ul class="skill_list">
+          <li>
+            <p class="skill_name">UI / UX</p>
+            <p class="skill_text">user interface&<br>user experience를 고려한 디자인</p>
+          </li>
+          <li>
+            <p class="skill_name">Illustrator</p>
+            <p class="skill_text">모바일 아이콘 제작,타이포제작 가능</p>
+          </li>
+          <li>
+            <p class="skill_name">Photoshop</p>
+            <p class="skill_text">홈페이지 시안을 제작<br>이미지 합성 및 보정과 간단한 이미지 제작</p>
+          </li>
+          <li>
+            <p class="skill_name">Figma</p>
+            <p class="skill_text">프로토타입<br>홈페이지 시안을 제작<br>팀을 만들어 협업</p>
+          </li>
+        </ul>
+    </div>
+    <div class="work_more2">
+      <div class="work_circle"></div>
+    </div>
+  </div>
+</body>
+</html>

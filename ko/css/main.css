@@ -1,0 +1,42 @@
+
+/* home */
+div#home{
+  width:100%; float:left; position: relative; left:0px; top:0px;
+}
+#home_title{
+  font:normal 144px/155px "Prata"; position: absolute; left:50%; top:300px; margin-left:-600px;
+}
+#home_title span{
+  position:relative; left:0px; top:300px; opacity:0;
+}
+#home_subtitle{
+  font:normal 36px "Prata"; position: absolute; left:50%; top:650px; margin-left:-600px;
+}
+#work_list{
+  position: absolute; left:50%; top:360px; margin-left:-150px; font:normal 22px "Roboto"; color:#bbaf9f;
+}
+#work_list li{
+  float:left; margin-right:130px; width:30px; position: relative; left:0px; top:0px; cursor:pointer;
+}
+.work_title{
+  font:normal 22px "Roboto"; opacity:0; text-align:center; position: absolute; left:50%; margin-left:-100px; top:-20px; width:200px; text-align: center; color:black;
+}
+.work_more{
+  width:149px; height:149px; position: absolute; left:50%; top:300px; margin-left:450px; background: url("/ko/image/arrow.png")no-repeat center center; cursor:pointer;
+}
+.work_circle{
+  background:url("/ko/image/circle.png")no-repeat; background-size:cover; -webkit-animation:rotate 20s infinite linear; width:149px; height:149px; -webkit-transition:0.2s ease;
+}
+.work_circle:hover{
+  -webkit-animation-duration:7s; width:170px; height:170px; margin-left:-11px; margin-top:-11px;
+}
+#language{
+  position:absolute; right:100px; bottom:50px; font:normal 24px "Roboto"; font-weight:500;
+}
+#language span{
+  display:block; width:50px; float:left; text-align:right; cursor:pointer;
+}
+#language span:last-child::before{
+  content:"/";
+  position: absolute; left:55px; top:0px;
+}

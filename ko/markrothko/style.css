@@ -1,0 +1,79 @@
+
+#home{
+  width:100%; float:left;
+}
+#home_title{
+  font:normal 144px/155px "Prata"; position: absolute; left:50%; top:350px; margin-left:-470px; width:940px;
+}
+#home_title span{
+  position:relative; left:0px; top:300px; opacity:0;
+}
+#down{
+  width:48px; height:90px; background: url("/ko/image/arrow_down.png")no-repeat; position: absolute; left:50%; bottom:100px; margin-left:-24px; cursor:pointer;
+}
+#prev{
+  width:39px; height:70px; background: url("/ko/image/prev.png")no-repeat; position: absolute; left:100px; top:400px; cursor:pointer;
+}
+#next{
+  width:39px; height:70px; background: url("/ko/image/next.png")no-repeat; position: absolute; right:100px; top:400px; cursor:pointer;
+}
+#num{
+  position: absolute; left:100px; bottom:100px; font:normal 22px "Roboto";
+}
+#info{
+  position: absolute; right:100px; bottom:100px; font:normal 16px "Noto Sans KR"; text-align: right;
+}
+/* work */
+/* home */
+div#work{
+  width:100%; height:auto; float:left; overflow: hidden;
+}
+#intro{
+  width:100%; float:left; position: relative; left:100px; top:0px; height:450px; /* padding:0px 100px 0px 100px; box-sizing: border-box; */
+}
+#intro_title{
+  font:normal 36px "Prata"; position:absolute; left:0px; top:100px;
+}
+#intro_title span{
+  font-size:24px;
+}
+#intro_more{
+  width:140px; position:absolute; left:0px; top:320px;
+}
+#intro_more2{
+  width:145px; position:absolute; left:300px; top:320px;
+}
+.intro_click{
+ font:normal 22px/18px "Roboto"; height:20px; top:330px; background:url("/ko/image/arrow.png")no-repeat right; background-size: contain; cursor:pointer;
+}
+.intro_clickmore{
+ z-index:1;
+}
+.intro_clickcircle{
+ width:30px; height:30px; position:absolute; left:0px; top:-7px; border-radius:50%; background:rgba(248,175,3,1); display:block; opacity:0.7;
+ animation:viewMore 2s infinite linear; z-index:-1;
+}
+.intro_click:nth-child(2) .intro_clickcircle{
+ animation:viewMore 2s infinite linear 1s;
+}
+#intro_text{
+ position: absolute; left:0px; top:180px; width:550px; font:normal 22px "Noto Sans KR"; text-align: justify;
+}
+#intro_text{
+  position: absolute; left:0px; top:180px; width:585px; font:normal 22px "Noto Sans KR"; text-align: justify;
+}
+/* mockup */
+#mockup{
+  float:left; width:100%; background:url("/ko/image/mockup_mark.gif")no-repeat center center; height:1000px; background-size:cover; 
+}
+
+/* lastnav */
+#bottom_move{
+  width:100%; height:200px; float:left; position: relative; left:0px; top:0px; margin-top:100px;
+}
+#bottom_prev{
+  width:295px; font:normal 36px "Prata"; background:url('/ko/image/arrow_prev.png')no-repeat left center; position: absolute; left:100px; top:0px; text-align:right; cursor:pointer;
+}
+#bottom_next{
+  width:170px; font:normal 36px "Prata"; background:url('/ko/image/arrow_next.png')no-repeat right center; position: absolute; right:100px; top:0px; cursor:pointer;
+}
